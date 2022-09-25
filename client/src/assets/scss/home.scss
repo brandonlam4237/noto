@@ -1,0 +1,26 @@
+@import "colors";
+
+.home {
+  background-color: rgb(244, 244, 244);
+  min-height: 200vh;
+
+  .add {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    border: none;
+    //border: 2.5px solid $dark-text;
+    background-color: $primary;
+    color: $dark-text;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    margin-bottom: 24px;
+    margin-right: 24px;
+  }
+}
