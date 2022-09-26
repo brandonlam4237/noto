@@ -9,10 +9,10 @@ function Navbar() {
       </Link>
       <div className="opts">
         <Link to="/login" className="link">
-          <div>Login</div>
+          <div>LOGIN</div>
         </Link>
         <Link to="/signup" className="link">
-          <div>Sign-up</div>
+          <div>SIGNUP</div>
         </Link>
       </div>
     </div>

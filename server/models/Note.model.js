@@ -6,7 +6,6 @@ const noteSchema = new Schema(
   {
     title: { type: String, default: "untitled" },
     content: { type: String, default: "" },
-    color: { type: String, default: "white" },
   },
   { timestamps: true }
 );
