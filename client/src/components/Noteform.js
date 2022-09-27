@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "../assets/scss/noteform.scss";
+import { useNotesContext } from "../hooks/useNotesContext";
 
 function Noteform({ closeForm }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const { dispatch } = useNotesContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,10 +23,11 @@ function Noteform({ closeForm }) {
       console.log("Note submission error");
     }
     if (response.ok) {
-      console.log("Note added");
+      console.log("Note added", json);
       setTitle("");
       setContent("");
       closeForm();
+      dispatch({ type: "CREATE_NOTE", payload: json });
     }
   };
 
