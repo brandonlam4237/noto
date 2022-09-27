@@ -1,0 +1,39 @@
+@import "colors";
+
+.note {
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid $dark-text;
+  border-radius: 4px;
+  width: 30vw;
+  height: 30vh;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    padding: 8px;
+    border-bottom: 1.5px solid $dark-text;
+
+    .options {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: none;
+      font-weight: bold;
+      cursor: pointer;
+
+      img {
+        height: 1.2rem;
+      }
+    }
+  }
+  .header:hover > .options {
+    display: block;
+  }
+
+  .content {
+    padding: 4px;
+  }
+}
