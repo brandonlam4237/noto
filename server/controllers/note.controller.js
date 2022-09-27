@@ -24,7 +24,6 @@ const getNote = async (req, res) => {
 // create new note
 const createNote = async (req, res) => {
   const { title, content, color } = req.body;
-
   try {
     const note = await Note.create({ title, content, color });
     res.status(200).json(note);
