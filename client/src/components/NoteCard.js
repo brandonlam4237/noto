@@ -1,5 +1,6 @@
 import "../assets/scss/notecard.scss";
 import trash from "../assets/icons/trash.png";
+import edit from "../assets/icons/edit.png";
 import { useNotesContext } from "../hooks/useNotesContext";
 
 function NoteCard({ note }) {
@@ -21,10 +22,11 @@ function NoteCard({ note }) {
 
   return (
     <div className="note">
-      <div className="header">
+      <div className="header" style={{ backgroundColor: note.color }}>
         <div className="title">{note.title}</div>
         <div className="options">
-          <img src={trash} onClick={handleDelete} />
+          <img src={edit} alt="edit" />
+          <img src={trash} onClick={handleDelete} alt="trash" />
         </div>
       </div>
       <div className="content">{note.content}</div>
