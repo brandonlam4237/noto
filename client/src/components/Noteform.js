@@ -94,7 +94,7 @@ function Noteform({ closeForm }) {
             name="color"
             onChange={(e) => setColor(e.target.value)}
           />
-          <label for="radio0" style={{ backgroundColor: "#caecce" }}></label>
+          <label for="radio4" style={{ backgroundColor: "#caecce" }}></label>
         </div>
         <button style={{ backgroundColor: color }}>ADD NOTE</button>
       </form>

@@ -3,6 +3,7 @@ import "../assets/scss/home.scss";
 import Noteform from "../components/Noteform";
 import { useNotesContext } from "../hooks/useNotesContext";
 import NoteCard from "../components/NoteCard";
+import Masonry from "react-masonry-css";
 
 function Home() {
   const [formOpen, setFormOpen] = useState(false);
@@ -19,14 +20,24 @@ function Home() {
     fetchNotes();
   }, [dispatch]);
 
+  const breakpoints = {
+    default: 3,
+    1100: 2,
+    700: 1,
+  };
+
   return (
     <div className="home">
-      <div className="notes">
+      <Masonry
+        breakpointCols={breakpoints}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
         {notes &&
           notes.map((note) => {
             return <NoteCard key={note._id} note={note} />;
           })}
-      </div>
+      </Masonry>
       <button
         className="add"
         onClick={() => {
