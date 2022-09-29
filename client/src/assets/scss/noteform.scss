@@ -35,6 +35,26 @@
       min-height: 50vh;
     }
 
+    .radio {
+      background-color: white;
+      display: flex;
+      justify-content: space-around;
+      padding-top: 4px;
+      padding-bottom: 12px;
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      label {
+        cursor: pointer;
+        border: 1.5px solid $dark-text;
+        height: 2rem;
+        width: 2rem;
+        border-radius: 4px;
+      }
+    }
+
     button {
       cursor: pointer;
       font-weight: bold;

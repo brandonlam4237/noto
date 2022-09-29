@@ -62,6 +62,7 @@ function Noteform({ closeForm }) {
             onChange={(e) => setColor(e.target.value)}
             defaultChecked
           />
+          <label for="radio0" style={{ backgroundColor: "#fdd2d2" }}></label>
           <input
             type="radio"
             value="#c3e5e9"
@@ -69,6 +70,7 @@ function Noteform({ closeForm }) {
             name="color"
             onChange={(e) => setColor(e.target.value)}
           />
+          <label for="radio1" style={{ backgroundColor: "#c3e5e9" }}></label>
           <input
             type="radio"
             value="#f2d2ad"
@@ -76,6 +78,7 @@ function Noteform({ closeForm }) {
             name="color"
             onChange={(e) => setColor(e.target.value)}
           />
+          <label for="radio2" style={{ backgroundColor: "#f2d2ad" }}></label>
           <input
             type="radio"
             value="#e9d8f0"
@@ -83,6 +86,7 @@ function Noteform({ closeForm }) {
             name="color"
             onChange={(e) => setColor(e.target.value)}
           />
+          <label for="radio3" style={{ backgroundColor: "#e9d8f0" }}></label>
           <input
             type="radio"
             value="#caecce"
@@ -90,8 +94,8 @@ function Noteform({ closeForm }) {
             name="color"
             onChange={(e) => setColor(e.target.value)}
           />
+          <label for="radio0" style={{ backgroundColor: "#caecce" }}></label>
         </div>
-        <h1>{color}</h1>
         <button style={{ backgroundColor: color }}>ADD NOTE</button>
       </form>
       <div id="overlay" onClick={closeForm} />
