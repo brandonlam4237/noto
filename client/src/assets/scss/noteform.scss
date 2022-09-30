@@ -2,6 +2,7 @@
 
 .noteform {
   form {
+    box-shadow: 0px 2px 4px $shadow;
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -9,7 +10,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1.5px solid $dark-text;
     border-radius: 4px;
     z-index: 10;
 
@@ -17,7 +17,6 @@
       border: none;
       min-height: 5vh;
       font-size: 1.2rem;
-      border-bottom: 1.5px solid $dark-text;
       border-top-right-radius: 4px;
       border-top-left-radius: 4px;
       padding: 4px;
@@ -48,7 +47,6 @@
 
       label {
         cursor: pointer;
-        border: 1.5px solid $dark-text;
         height: 2rem;
         width: 2rem;
         border-radius: 4px;

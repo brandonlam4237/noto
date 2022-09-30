@@ -1,12 +1,11 @@
 @import "colors";
 
 .nav {
-  background-color: $primary;
-  //border-bottom: 2px solid $dark-text;
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: white;
 
   .link {
     text-decoration: none;
