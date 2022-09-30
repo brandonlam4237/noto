@@ -2,9 +2,12 @@ import "../assets/scss/notecard.scss";
 import trash from "../assets/icons/trash.png";
 import edit from "../assets/icons/edit.png";
 import { useNotesContext } from "../hooks/useNotesContext";
+import { useState } from "react";
+import EditNote from "./EditNote";
 
 function NoteCard({ note }) {
   const { dispatch } = useNotesContext();
+  const [EditFormOpen, setEditFormOpen] = useState(false);
 
   const handleDelete = async () => {
     const response = await fetch(
@@ -25,11 +28,20 @@ function NoteCard({ note }) {
       <div className="header" style={{ backgroundColor: note.color }}>
         <div className="title">{note.title}</div>
         <div className="options">
-          <img src={edit} alt="edit" />
+          <img
+            src={edit}
+            onClick={() => {
+              setEditFormOpen(true);
+            }}
+            alt="edit"
+          />
           <img src={trash} onClick={handleDelete} alt="trash" />
         </div>
       </div>
       <div className="content">{note.content}</div>
+      {EditFormOpen && (
+        <EditNote closeForm={() => setEditFormOpen(false)} note={note} />
+      )}
     </div>
   );
 }

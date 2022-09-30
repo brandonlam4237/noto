@@ -1,12 +1,12 @@
-import { useState } from "react";
-import "../assets/scss/noteform.scss";
 import { useNotesContext } from "../hooks/useNotesContext";
+import { useState } from "react";
 
-function Noteform({ closeForm }) {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [color, setColor] = useState("#fdd2d2");
+function EditNote({ closeForm, note }) {
+  const [title, setTitle] = useState(note.title);
+  const [content, setContent] = useState(note.content);
+  const [color, setColor] = useState(note.color);
   const { dispatch } = useNotesContext();
+  const [id] = useState(note._id);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,22 +14,31 @@ function Noteform({ closeForm }) {
     if (title === "") {
       note = { title: "untitled", content, color };
     }
-    const response = await fetch("http://localhost:3001/api/notes", {
-      method: "POST",
+
+    const response = await fetch("http://localhost:3001/api/notes/" + id, {
+      method: "PATCH",
       body: JSON.stringify(note),
       headers: { "Content-Type": "application/json" },
     });
     const json = await response.json();
     if (!response.ok) {
       console.log("Note submission error");
+      console.log(id);
     }
     if (response.ok) {
-      console.log("Note added", json);
-      setTitle("");
-      setContent("");
-      setColor("#fdd2d2");
+      console.log("Note Updated", json);
       closeForm();
-      dispatch({ type: "CREATE_NOTE", payload: json });
+      dispatch({ type: "UPDATE_NOTE", payload: json });
+
+      // refetch notes to update visually
+      const fetchNotes = async () => {
+        const response = await fetch("http://localhost:3001/api/notes");
+        const json = await response.json();
+        if (response.ok) {
+          dispatch({ type: "SET_NOTES", payload: json });
+        }
+      };
+      fetchNotes();
     }
   };
 
@@ -111,11 +120,11 @@ function Noteform({ closeForm }) {
             style={{ backgroundColor: "#caecce" }}
           ></label>
         </div>
-        <button style={{ backgroundColor: color }}>ADD NOTE</button>
+        <button style={{ backgroundColor: color }}>UPDATE NOTE</button>
       </form>
       <div id="overlay" onClick={closeForm} />
     </div>
   );
 }
 
-export default Noteform;
+export default EditNote;
