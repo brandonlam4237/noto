@@ -2,6 +2,7 @@ import "../assets/scss/notecard.scss";
 import trash from "../assets/icons/trash.png";
 import edit from "../assets/icons/edit.png";
 import lock from "../assets/icons/lock.png";
+import unlock from "../assets/icons/unlock.png";
 import { useNotesContext } from "../hooks/useNotesContext";
 import { useState } from "react";
 import EditNote from "./EditNote";
@@ -85,7 +86,7 @@ function NoteCard({ note }) {
                   alt="lock"
                 />
               )}
-              {lockedState && <div onClick={handleUnlockPerma}>UNLOCK</div>}
+              {lockedState && <img src={unlock} onClick={handleUnlockPerma} />}
               <img
                 src={edit}
                 onClick={() => {

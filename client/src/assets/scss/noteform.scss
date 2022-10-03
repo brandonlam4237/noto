@@ -5,7 +5,8 @@
     box-shadow: 0px 2px 4px $shadow;
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: min(40rem, 100vw);
+
     position: fixed;
     top: 50%;
     left: 50%;

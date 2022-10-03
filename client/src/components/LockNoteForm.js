@@ -34,8 +34,7 @@ function LockNoteForm({ closeForm, note, lockNote }) {
       closeForm();
       dispatch({ type: "UPDATE_NOTE", payload: json });
 
-      /*
-      // refetch notes to update visually
+      // refetch notes to update password
       const fetchNotes = async () => {
         const response = await fetch("http://localhost:3001/api/notes");
         const json = await response.json();
@@ -43,21 +42,24 @@ function LockNoteForm({ closeForm, note, lockNote }) {
           dispatch({ type: "SET_NOTES", payload: json });
         }
       };
-      fetchNotes(); */
+      fetchNotes();
       lockNote();
     }
   };
   return (
     <div className="lock-form">
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          value={password}
-        />
-        <button>Set Password</button>
+      <form onSubmit={handleSubmit} style={{ backgroundColor: note.color }}>
+        <div>
+          <input
+            type="password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            value={password}
+            placeholder="password"
+          />
+          <button>SET PASSWORD</button>
+        </div>
       </form>
       <div id="overlay" onClick={closeForm} />
     </div>

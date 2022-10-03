@@ -1,10 +1,13 @@
 import { useState } from "react";
 import lock from "../assets/icons/lock.png";
+import unlock from "../assets/icons/unlock.png";
+import "../assets/scss/lockednote.scss";
 
 function LockedNote({ note, unlockNote }) {
   const [input, setInput] = useState("");
   const [clicked, setClicked] = useState(false);
-  const handleUnlock = () => {
+  const handleUnlock = (e) => {
+    e.preventDefault();
     console.log(input, " and ", note.password);
     if (input === note.password) {
       console.log(input, " and ", note.password, " match");
@@ -12,22 +15,25 @@ function LockedNote({ note, unlockNote }) {
     }
   };
   return (
-    <div>
+    <div className="locked-note" style={{ backgroundColor: note.color }}>
       {clicked && (
-        <div>
+        <form className="unlock" onSubmit={handleUnlock}>
           <input
+            type="password"
             placeholder="password"
             onChange={(e) => {
               setInput(e.target.value);
             }}
             value={input}
           />
-          <button onClick={handleUnlock}>Unlock</button>
-        </div>
+          <button>UNLOCK</button>
+        </form>
       )}
       {!clicked && (
         <img
           src={lock}
+          onMouseOver={(e) => (e.currentTarget.src = unlock)}
+          onMouseOut={(e) => (e.currentTarget.src = lock)}
           onClick={() => {
             setClicked(true);
           }}
