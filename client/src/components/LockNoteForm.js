@@ -34,6 +34,7 @@ function LockNoteForm({ closeForm, note, lockNote }) {
       closeForm();
       dispatch({ type: "UPDATE_NOTE", payload: json });
 
+      /*
       // refetch notes to update visually
       const fetchNotes = async () => {
         const response = await fetch("http://localhost:3001/api/notes");
@@ -42,7 +43,7 @@ function LockNoteForm({ closeForm, note, lockNote }) {
           dispatch({ type: "SET_NOTES", payload: json });
         }
       };
-      fetchNotes();
+      fetchNotes(); */
       lockNote();
     }
   };

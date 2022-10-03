@@ -1,7 +1,7 @@
 import { useNotesContext } from "../hooks/useNotesContext";
 import { useState } from "react";
 
-function EditNote({ closeForm, note }) {
+function EditNote({ closeForm, note, _setTitle, _setContent, _setColor }) {
   const [title, setTitle] = useState(note.title);
   const [content, setContent] = useState(note.content);
   const [color, setColor] = useState(note.color);
@@ -29,7 +29,13 @@ function EditNote({ closeForm, note }) {
       console.log("Note Updated", json);
       closeForm();
       dispatch({ type: "UPDATE_NOTE", payload: json });
-
+      if (title === "") {
+        _setTitle("untitled");
+      } else {
+        _setTitle(title);
+      }
+      _setContent(content);
+      _setColor(color);
       // refetch notes to update visually
       const fetchNotes = async () => {
         const response = await fetch("http://localhost:3001/api/notes");
