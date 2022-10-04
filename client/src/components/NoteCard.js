@@ -9,6 +9,9 @@ import EditNote from "./EditNote";
 import LockNoteForm from "./LockNoteForm";
 import LockedNote from "./LockedNote";
 
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
+
 function NoteCard({ note }) {
   const { dispatch } = useNotesContext();
   const [EditFormOpen, setEditFormOpen] = useState(false);
@@ -92,25 +95,57 @@ function NoteCard({ note }) {
             </div>
             <div className="options">
               {!lockedState && (
-                <img
-                  src={lock}
-                  onClick={() => {
-                    setLockFormOpen(true);
-                  }}
-                  alt="lock"
-                />
+                <Tippy
+                  content={
+                    <span style={{ color: "white", letterSpacing: "1.5px" }}>
+                      Lock Note
+                    </span>
+                  }
+                >
+                  <img
+                    src={lock}
+                    onClick={() => {
+                      setLockFormOpen(true);
+                    }}
+                    alt="lock"
+                  />
+                </Tippy>
               )}
               {lockedState && (
-                <img src={unlock} alt="unlock" onClick={handleUnlockPerma} />
+                <Tippy
+                  content={
+                    <span style={{ color: "white", letterSpacing: "1.5px" }}>
+                      Remove Lock
+                    </span>
+                  }
+                >
+                  <img src={unlock} alt="unlock" onClick={handleUnlockPerma} />
+                </Tippy>
               )}
-              <img
-                src={edit}
-                onClick={() => {
-                  setEditFormOpen(true);
-                }}
-                alt="edit"
-              />
-              <img src={trash} onClick={handleDelete} alt="trash" />
+              <Tippy
+                content={
+                  <span style={{ color: "white", letterSpacing: "1.5px" }}>
+                    Edit Note
+                  </span>
+                }
+              >
+                <img
+                  src={edit}
+                  onClick={() => {
+                    setEditFormOpen(true);
+                  }}
+                  alt="edit"
+                />
+              </Tippy>
+              <Tippy
+                content={
+                  <span style={{ color: "white", letterSpacing: "1.5px" }}>
+                    Delete Note
+                  </span>
+                }
+              >
+                <img src={trash} onClick={handleDelete} alt="trash" />
+              </Tippy>
             </div>
           </div>
           <div className="content">{note.content}</div>
