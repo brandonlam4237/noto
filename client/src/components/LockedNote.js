@@ -32,6 +32,7 @@ function LockedNote({ note, unlockNote }) {
       {!clicked && (
         <img
           src={lock}
+          alt="lock"
           onMouseOver={(e) => (e.currentTarget.src = unlock)}
           onMouseOut={(e) => (e.currentTarget.src = lock)}
           onClick={() => {

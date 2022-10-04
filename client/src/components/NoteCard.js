@@ -75,7 +75,21 @@ function NoteCard({ note }) {
       {!locked && (
         <div>
           <div className="header" style={{ backgroundColor: note.color }}>
-            <div className="title">{note.title}</div>
+            <div className="title">
+              {lockedState && (
+                <img
+                  src={unlock}
+                  className="big-icon"
+                  alt="unlocked"
+                  onClick={() => {
+                    setLocked(true);
+                  }}
+                  onMouseOver={(e) => (e.currentTarget.src = lock)}
+                  onMouseOut={(e) => (e.currentTarget.src = unlock)}
+                />
+              )}
+              <div>{note.title}</div>
+            </div>
             <div className="options">
               {!lockedState && (
                 <img
@@ -86,7 +100,9 @@ function NoteCard({ note }) {
                   alt="lock"
                 />
               )}
-              {lockedState && <img src={unlock} onClick={handleUnlockPerma} />}
+              {lockedState && (
+                <img src={unlock} alt="unlock" onClick={handleUnlockPerma} />
+              )}
               <img
                 src={edit}
                 onClick={() => {
