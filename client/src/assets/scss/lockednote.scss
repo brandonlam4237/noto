@@ -1,7 +1,7 @@
 @import "colors";
 
 .locked-note {
-  height: 10rem;
+  height: clamp(10rem, 0.7143rem + 11.4286vw, 15rem);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@
       border: none;
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
-      font-size: 1rem;
+      font-size: clamp(1rem, 0.0714rem + 1.1429vw, 1.5rem);
       text-align: center;
       letter-spacing: 1px;
       padding: 4px;
@@ -34,11 +34,12 @@
       border: none;
       letter-spacing: 1px;
       background-color: rgb(238, 238, 238);
+      font-size: clamp(0.85rem, 0.2rem + 0.8vw, 1.2rem);
     }
   }
 
   img {
-    height: 3rem;
+    height: clamp(3rem, 1.1429rem + 2.2857vw, 4rem);
     cursor: pointer;
   }
 }
