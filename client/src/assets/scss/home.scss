@@ -6,6 +6,15 @@
   background-color: $faint-grey;
   padding: 36px;
 
+  @include xs {
+    display: flex;
+    justify-content: center;
+  }
+
+  @include xsm {
+    display: block;
+  }
+
   .my-masonry-grid {
     display: -webkit-box; /* Not needed if autoprefixing */
     display: -ms-flexbox; /* Not needed if autoprefixing */
