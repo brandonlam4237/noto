@@ -25,7 +25,7 @@
     @include md {
       height: 40vh;
       width: 40vw;
-      padding: 60px;
+      padding: 70px;
     }
   }
   .header {
@@ -98,6 +98,8 @@
     }
   }
   button {
+    cursor: pointer;
+    background-color: white;
     font-weight: bold;
     padding: 4px;
     border-radius: 4px;
@@ -109,5 +111,19 @@
       border: solid $dark-outline 2px;
       letter-spacing: 2px;
     }
+  }
+
+  .error {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(221, 104, 104);
+    font-size: 0.7rem;
+    padding: 6px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    @include lg {
+      font-size: clamp(0.7rem, -0.2286rem + 1.1429vw, 1.2rem);
+    }
+    letter-spacing: 2px;
   }
 }
