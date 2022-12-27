@@ -1,0 +1,113 @@
+@import "colors";
+@import "breakpoints";
+
+.signup {
+  background-image: url("../images/color_bg2.png");
+  background-size: cover;
+  //border: solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .box {
+    background-color: $dark-div;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 4px;
+    box-shadow: 2px 3px 5px $dark-shadow;
+    margin-top: 60px;
+
+    @include md {
+      height: 40vh;
+      width: 40vw;
+      padding: 60px;
+    }
+  }
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    h2 {
+      @include md {
+        font-size: clamp(1.4rem, 0.4026rem + 2.0779vw, 3rem);
+      }
+    }
+
+    .slogan {
+      font-size: 0.6rem;
+      @include lg {
+        font-size: clamp(0.6rem, -0.1429rem + 0.9143vw, 1rem);
+      }
+      letter-spacing: 2px;
+    }
+  }
+
+  .form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 16rem;
+    @include lg {
+      width: 25vw;
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.7rem;
+    gap: 4px;
+    padding: 6px;
+    letter-spacing: 1px;
+
+    @include lg {
+      font-size: clamp(0.7rem, -0.2286rem + 1.1429vw, 1.2rem);
+    }
+    letter-spacing: 2px;
+  }
+
+  input {
+    border: solid $dark-outline 1.5px;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    padding: 4px;
+    outline: none;
+    border-radius: 4px;
+    @include lg {
+      font-size: clamp(0.8rem, -0.6857rem + 1.8286vw, 1.6rem);
+      padding: clamp(0.25rem, 0.0179rem + 0.2857vw, 0.375rem);
+      border: solid $dark-outline 2px;
+      letter-spacing: 2px;
+    }
+  }
+  .logo {
+    height: 10vh;
+    width: 10vh;
+    @include md {
+      height: clamp(4rem, 1.5065rem + 5.1948vw, 8rem);
+      width: clamp(4rem, 1.5065rem + 5.1948vw, 8rem);
+    }
+  }
+  button {
+    font-weight: bold;
+    padding: 4px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    border: solid $dark-outline 1.5px;
+    @include lg {
+      font-size: clamp(0.8rem, -0.6857rem + 1.8286vw, 1.6rem);
+      padding: clamp(0.25rem, 0.0179rem + 0.2857vw, 0.375rem);
+      border: solid $dark-outline 2px;
+      letter-spacing: 2px;
+    }
+  }
+}
