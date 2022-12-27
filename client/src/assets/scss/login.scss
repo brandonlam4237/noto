@@ -2,11 +2,14 @@
 @import "breakpoints";
 
 .login {
+  background-image: url("../images/color_bg.png");
+  background-size: cover;
   //border: solid red;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
+  height: 100vh;
+
   .box {
     background-color: $dark-div;
     padding: 30px;
@@ -17,6 +20,7 @@
     gap: 20px;
     border-radius: 4px;
     box-shadow: 2px 3px 5px $dark-shadow;
+    margin-top: 60px;
 
     @include md {
       height: 40vh;

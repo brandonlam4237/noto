@@ -9,6 +9,15 @@
   @include xs {
     display: flex;
     justify-content: center;
+    padding-top: 115px;
+  }
+
+  @include md {
+    padding-top: 130px;
+  }
+
+  @include lg {
+    padding-top: clamp(8rem, 5.1948rem + 5.8442vw, 12.5rem);
   }
 
   @include xsm {

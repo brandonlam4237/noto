@@ -26,7 +26,7 @@ function Home() {
   const breakpoints = {
     default: 3,
     1100: 2,
-    750: 1,
+    780: 1,
   };
 
   return (
