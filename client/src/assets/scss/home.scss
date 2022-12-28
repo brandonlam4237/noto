@@ -60,6 +60,9 @@
     height: clamp(3.5rem, -2.0714rem + 6.8571vw, 6.5rem);
     width: clamp(3.5rem, -2.0714rem + 6.8571vw, 6.5rem);
     margin: 24px;
+    @include lg {
+      border-width: clamp(0.125rem, -0.1071rem + 0.2857vw, 0.25rem);
+    }
   }
 
   .empty-home {

@@ -4,6 +4,7 @@ import edit from "../assets/icons/edit.png";
 import lock from "../assets/icons/lock.png";
 import unlock from "../assets/icons/unlock.png";
 import { useNotesContext } from "../hooks/useNotesContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 import { useState } from "react";
 import EditNote from "./EditNote";
 import LockNoteForm from "./LockNoteForm";
@@ -14,6 +15,7 @@ import "tippy.js/dist/tippy.css";
 
 function NoteCard({ note }) {
   const { dispatch } = useNotesContext();
+  const { user } = useAuthContext();
   const [EditFormOpen, setEditFormOpen] = useState(false);
   const [LockFormOpen, setLockFormOpen] = useState(false);
   const [lockedState, setLockedState] = useState(note.locked);
@@ -24,10 +26,14 @@ function NoteCard({ note }) {
   const [locked, setLocked] = useState(note.locked);
 
   const handleDelete = async () => {
+    if (!user) return;
     const response = await fetch(
       "http://localhost:3001/api/notes/" + note._id,
       {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
       }
     );
     const json = await response.json();
@@ -39,6 +45,9 @@ function NoteCard({ note }) {
 
   const handleUnlockPerma = async (e) => {
     //e.preventDefault();
+    if (!user) {
+      return;
+    }
     var note = {
       title,
       content,
@@ -49,7 +58,10 @@ function NoteCard({ note }) {
     const response = await fetch("http://localhost:3001/api/notes/" + id, {
       method: "PATCH",
       body: JSON.stringify(note),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
     });
     const json = await response.json();
     if (!response.ok) {
@@ -63,7 +75,11 @@ function NoteCard({ note }) {
       setLockedState(false);
       // refetch notes to update visually
       const fetchNotes = async () => {
-        const response = await fetch("http://localhost:3001/api/notes");
+        const response = await fetch("http://localhost:3001/api/notes", {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
         const json = await response.json();
         if (response.ok) {
           dispatch({ type: "SET_NOTES", payload: json });

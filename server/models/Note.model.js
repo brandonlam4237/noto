@@ -9,6 +9,7 @@ const noteSchema = new Schema(
     color: { type: String, default: "#fdd2d2" },
     locked: { type: Boolean, default: false },
     password: { type: String, default: "" },
+    user_id: { type: String, required: true },
   },
   { timestamps: true }
 );

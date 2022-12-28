@@ -1,4 +1,5 @@
 import { useNotesContext } from "../hooks/useNotesContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 import { useState } from "react";
 
 function EditNote({ closeForm, note, _setTitle, _setContent, _setColor }) {
@@ -6,10 +7,12 @@ function EditNote({ closeForm, note, _setTitle, _setContent, _setColor }) {
   const [content, setContent] = useState(note.content);
   const [color, setColor] = useState(note.color);
   const { dispatch } = useNotesContext();
+  const { user } = useAuthContext();
   const [id] = useState(note._id);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!user) return;
     var note = { title, content, color };
     if (title === "") {
       note = { title: "untitled", content, color };
@@ -18,7 +21,10 @@ function EditNote({ closeForm, note, _setTitle, _setContent, _setColor }) {
     const response = await fetch("http://localhost:3001/api/notes/" + id, {
       method: "PATCH",
       body: JSON.stringify(note),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
     });
     const json = await response.json();
     if (!response.ok) {
@@ -38,7 +44,11 @@ function EditNote({ closeForm, note, _setTitle, _setContent, _setColor }) {
       _setColor(color);
       // refetch notes to update visually
       const fetchNotes = async () => {
-        const response = await fetch("http://localhost:3001/api/notes");
+        const response = await fetch("http://localhost:3001/api/notes", {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
         const json = await response.json();
         if (response.ok) {
           dispatch({ type: "SET_NOTES", payload: json });

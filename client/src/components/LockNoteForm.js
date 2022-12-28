@@ -1,10 +1,12 @@
 import "../assets/scss/lockform.scss";
 import { useNotesContext } from "../hooks/useNotesContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 import { useState } from "react";
 
 function LockNoteForm({ closeForm, note, lockNote }) {
   const [password, setPassword] = useState("");
   const { dispatch } = useNotesContext();
+  const { user } = useAuthContext();
   const [id] = useState(note._id);
   const [title] = useState(note.title);
   const [content] = useState(note.content);
@@ -12,6 +14,7 @@ function LockNoteForm({ closeForm, note, lockNote }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!user) return;
     var note = {
       title,
       content,
@@ -22,7 +25,10 @@ function LockNoteForm({ closeForm, note, lockNote }) {
     const response = await fetch("http://localhost:3001/api/notes/" + id, {
       method: "PATCH",
       body: JSON.stringify(note),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
     });
     const json = await response.json();
     if (!response.ok) {
@@ -36,7 +42,11 @@ function LockNoteForm({ closeForm, note, lockNote }) {
 
       // refetch notes to update password
       const fetchNotes = async () => {
-        const response = await fetch("http://localhost:3001/api/notes");
+        const response = await fetch("http://localhost:3001/api/notes", {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
         const json = await response.json();
         if (response.ok) {
           dispatch({ type: "SET_NOTES", payload: json });

@@ -3,25 +3,34 @@ import "../assets/scss/home.scss";
 import Noteform from "../components/Noteform";
 import NoteFormInit from "../components/NoteFormInit";
 import { useNotesContext } from "../hooks/useNotesContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 import NoteCard from "../components/NoteCard";
 import Masonry from "react-masonry-css";
 
 function Home() {
   const [formOpen, setFormOpen] = useState(false);
   const { notes, dispatch } = useNotesContext();
+  const { user } = useAuthContext();
   const [formInitOpen, setFormInitOpen] = useState(false);
   const [initColor, setInitColor] = useState("");
 
   useEffect(() => {
     const fetchNotes = async () => {
-      const response = await fetch("http://localhost:3001/api/notes");
+      const response = await fetch("http://localhost:3001/api/notes", {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
       const json = await response.json();
       if (response.ok) {
         dispatch({ type: "SET_NOTES", payload: json });
       }
     };
-    fetchNotes();
-  }, [dispatch]);
+
+    if (user) {
+      fetchNotes();
+    }
+  }, [dispatch, user]);
 
   const breakpoints = {
     default: 3,

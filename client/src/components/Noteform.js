@@ -1,15 +1,18 @@
 import { useState } from "react";
 import "../assets/scss/noteform.scss";
 import { useNotesContext } from "../hooks/useNotesContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function Noteform({ closeForm }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [color, setColor] = useState("#fdd2d2");
   const { dispatch } = useNotesContext();
+  const { user } = useAuthContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!user) return;
     var note = { title, content, color };
     if (title === "") {
       note = { title: "untitled", content, color };
@@ -17,7 +20,10 @@ function Noteform({ closeForm }) {
     const response = await fetch("http://localhost:3001/api/notes", {
       method: "POST",
       body: JSON.stringify(note),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
     });
     const json = await response.json();
     if (!response.ok) {

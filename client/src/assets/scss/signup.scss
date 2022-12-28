@@ -70,8 +70,8 @@
 
     @include lg {
       font-size: clamp(0.7rem, -0.2286rem + 1.1429vw, 1.2rem);
+      letter-spacing: 2px;
     }
-    letter-spacing: 2px;
   }
 
   input {
@@ -123,7 +123,7 @@
     text-transform: uppercase;
     @include lg {
       font-size: clamp(0.7rem, -0.2286rem + 1.1429vw, 1.2rem);
+      letter-spacing: 2px;
     }
-    letter-spacing: 2px;
   }
 }
