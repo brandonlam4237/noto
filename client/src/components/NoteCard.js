@@ -28,7 +28,7 @@ function NoteCard({ note }) {
   const handleDelete = async () => {
     if (!user) return;
     const response = await fetch(
-      "http://localhost:3001/api/notes/" + note._id,
+      "https://noto-server.up.railway.app/api/notes/" + note._id,
       {
         method: "DELETE",
         headers: {
@@ -55,14 +55,17 @@ function NoteCard({ note }) {
       locked: false,
       password: "",
     };
-    const response = await fetch("http://localhost:3001/api/notes/" + id, {
-      method: "PATCH",
-      body: JSON.stringify(note),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
+    const response = await fetch(
+      "https://noto-server.up.railway.app/api/notes/" + id,
+      {
+        method: "PATCH",
+        body: JSON.stringify(note),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
     const json = await response.json();
     if (!response.ok) {
       console.log("Note submission error");
@@ -75,11 +78,14 @@ function NoteCard({ note }) {
       setLockedState(false);
       // refetch notes to update visually
       const fetchNotes = async () => {
-        const response = await fetch("http://localhost:3001/api/notes", {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const response = await fetch(
+          "https://noto-server.up.railway.app/api/notes",
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
         const json = await response.json();
         if (response.ok) {
           dispatch({ type: "SET_NOTES", payload: json });

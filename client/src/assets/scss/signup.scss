@@ -89,6 +89,11 @@
       letter-spacing: 2px;
     }
   }
+
+  input:focus {
+    box-shadow: 2px 3px 5px $dark-shadow;
+  }
+
   .logo {
     height: 10vh;
     width: 10vh;

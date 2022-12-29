@@ -18,14 +18,17 @@ function Noteform({ closeForm }) {
     if (title === "") {
       note = { title: "untitled", content, color };
     }
-    const response = await fetch("http://localhost:3001/api/notes", {
-      method: "POST",
-      body: JSON.stringify(note),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
+    const response = await fetch(
+      "https://noto-server.up.railway.app/api/notes",
+      {
+        method: "POST",
+        body: JSON.stringify(note),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
     const json = await response.json();
     if (!response.ok) {
       console.log("Note submission error");

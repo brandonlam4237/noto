@@ -22,14 +22,17 @@ function LockNoteForm({ closeForm, note, lockNote }) {
       locked: true,
       password: password,
     };
-    const response = await fetch("http://localhost:3001/api/notes/" + id, {
-      method: "PATCH",
-      body: JSON.stringify(note),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
+    const response = await fetch(
+      "https://noto-server.up.railway.app/api/notes/" + id,
+      {
+        method: "PATCH",
+        body: JSON.stringify(note),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
     const json = await response.json();
     if (!response.ok) {
       console.log("Note submission error");
@@ -42,11 +45,14 @@ function LockNoteForm({ closeForm, note, lockNote }) {
 
       // refetch notes to update password
       const fetchNotes = async () => {
-        const response = await fetch("http://localhost:3001/api/notes", {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const response = await fetch(
+          "https://noto-server.up.railway.app/api/notes",
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
         const json = await response.json();
         if (response.ok) {
           dispatch({ type: "SET_NOTES", payload: json });
