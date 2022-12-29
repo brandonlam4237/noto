@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../assets/scss/noteform.scss";
 import { useNotesContext } from "../hooks/useNotesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { motion } from "framer-motion";
 
 function Noteform({ closeForm }) {
   const [title, setTitle] = useState("");
@@ -68,10 +69,11 @@ function Noteform({ closeForm }) {
             onChange={(e) => setColor(e.target.value)}
             defaultChecked
           />
-          <label
+          <motion.label
+            whileHover={{ y: -8 }}
             htmlFor="radio0"
             style={{ backgroundColor: "#fdd2d2" }}
-          ></label>
+          ></motion.label>
           <input
             type="radio"
             value="#c3e5e9"
@@ -79,10 +81,11 @@ function Noteform({ closeForm }) {
             name="color"
             onChange={(e) => setColor(e.target.value)}
           />
-          <label
+          <motion.label
+            whileHover={{ y: -8 }}
             htmlFor="radio1"
             style={{ backgroundColor: "#c3e5e9" }}
-          ></label>
+          ></motion.label>
           <input
             type="radio"
             value="#f2d2ad"
@@ -90,10 +93,11 @@ function Noteform({ closeForm }) {
             name="color"
             onChange={(e) => setColor(e.target.value)}
           />
-          <label
+          <motion.label
+            whileHover={{ y: -8 }}
             htmlFor="radio2"
             style={{ backgroundColor: "#f2d2ad" }}
-          ></label>
+          ></motion.label>
           <input
             type="radio"
             value="#e9d8f0"
@@ -101,10 +105,11 @@ function Noteform({ closeForm }) {
             name="color"
             onChange={(e) => setColor(e.target.value)}
           />
-          <label
+          <motion.label
+            whileHover={{ y: -8 }}
             htmlFor="radio3"
             style={{ backgroundColor: "#e9d8f0" }}
-          ></label>
+          ></motion.label>
           <input
             type="radio"
             value="#caecce"
@@ -112,10 +117,11 @@ function Noteform({ closeForm }) {
             name="color"
             onChange={(e) => setColor(e.target.value)}
           />
-          <label
+          <motion.label
+            whileHover={{ y: -8 }}
             htmlFor="radio4"
             style={{ backgroundColor: "#caecce" }}
-          ></label>
+          ></motion.label>
         </div>
         <button style={{ backgroundColor: color }}>ADD NOTE</button>
       </form>

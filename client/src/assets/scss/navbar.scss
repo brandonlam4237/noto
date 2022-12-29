@@ -63,6 +63,7 @@
         border-width: clamp(0.125rem, 0.0089rem + 0.1429vw, 0.1875rem);
       }
     }
+
     .email {
       font-weight: bold;
       @include xs {

@@ -1,16 +1,21 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "../assets/scss/navbar.scss";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import user_icon from "../assets/icons/user.png";
+import { motion } from "framer-motion";
+
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 
 function Navbar() {
   const { logout } = useLogout();
   const { user } = useAuthContext();
+  const [hover, isHover] = useState(false);
 
   const handleClick = () => {
+    isHover(false);
     logout();
   };
 
@@ -21,7 +26,11 @@ function Navbar() {
       </Link>
       {user && (
         <div className="logged-in">
-          <div className="email">{user.email}</div>
+          {hover && (
+            <motion.div initial={{ x: 8 }} animate={{ x: 0 }} className="email">
+              {user.email}
+            </motion.div>
+          )}
           <Tippy
             content={
               <span style={{ color: "white", letterSpacing: "1.5px" }}>
@@ -29,7 +38,17 @@ function Navbar() {
               </span>
             }
           >
-            <img src={user_icon} alt="user icon" onClick={handleClick} />
+            <img
+              onClick={handleClick}
+              onMouseOver={() => {
+                isHover(true);
+              }}
+              onMouseOut={() => {
+                isHover(false);
+              }}
+              src={user_icon}
+              alt="user icon"
+            />
           </Tippy>
         </div>
       )}

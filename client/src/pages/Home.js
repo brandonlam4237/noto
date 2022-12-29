@@ -6,6 +6,7 @@ import { useNotesContext } from "../hooks/useNotesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import NoteCard from "../components/NoteCard";
 import Masonry from "react-masonry-css";
+import { motion } from "framer-motion";
 
 function Home() {
   const [formOpen, setFormOpen] = useState(false);
@@ -43,35 +44,40 @@ function Home() {
       {notes !== null && notes.length < 1 && (
         <div className="empty-home">
           <div className="empty">
-            <button
+            <motion.button
+              whileHover={{ y: -10 }}
               style={{ backgroundColor: "#fdd2d2" }}
               onClick={() => {
                 setInitColor("#fdd2d2");
                 setFormInitOpen(true);
               }}
             />
-            <button
+            <motion.button
+              whileHover={{ y: -10 }}
               style={{ backgroundColor: "#c3e5e9" }}
               onClick={() => {
                 setInitColor("#c3e5e9");
                 setFormInitOpen(true);
               }}
             />
-            <button
+            <motion.button
+              whileHover={{ y: -10 }}
               style={{ backgroundColor: "#f2d2ad" }}
               onClick={() => {
                 setInitColor("#f2d2ad");
                 setFormInitOpen(true);
               }}
             />
-            <button
+            <motion.button
+              whileHover={{ y: -10 }}
               style={{ backgroundColor: "#e9d8f0" }}
               onClick={() => {
                 setInitColor("#e9d8f0");
                 setFormInitOpen(true);
               }}
             />
-            <button
+            <motion.button
+              whileHover={{ y: -10 }}
               style={{ backgroundColor: "#caecce" }}
               onClick={() => {
                 setInitColor("#caecce");
