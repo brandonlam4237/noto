@@ -3,9 +3,6 @@
 
 .nav {
   padding: 20px;
-  @include xl {
-    padding: 30px;
-  }
   position: fixed;
   width: 100vw;
 
@@ -17,7 +14,7 @@
   .link {
     text-decoration: none;
     h1 {
-      font-size: clamp(2.5rem, -2.1429rem + 5.2143vw, 5rem);
+      font-size: clamp(2.5rem, -2.1429rem + 5.2143vw, 3rem);
       letter-spacing: 2.5px;
     }
   }
@@ -29,12 +26,9 @@
       gap: 24px;
     }
     font-weight: bold;
-    font-size: clamp(1.1rem, -0.9429rem + 2.2143vw, 2.2rem);
+    font-size: clamp(1.1rem, -0.9429rem + 2.2143vw, 1.5rem);
     letter-spacing: 1px;
     margin-right: 35px;
-    @include lg {
-      margin-right: clamp(2.2rem, -0.2143rem + 2.9714vw, 3.5rem);
-    }
   }
 
   .logged-in {
@@ -51,9 +45,6 @@
       font-size: clamp(1rem, -0.1143rem + 1.3714vw, 1.6rem);
     }
 
-    @include lg {
-      margin-right: clamp(2.2rem, -0.2143rem + 2.9714vw, 3.5rem);
-    }
     img {
       height: clamp(2rem, 0.1429rem + 2.2857vw, 3rem);
       border: solid 2px $dark-text;
@@ -73,5 +64,8 @@
         visibility: visible;
       }
     }
+  }
+  .link > div:hover {
+    color: $dark-outline;
   }
 }
