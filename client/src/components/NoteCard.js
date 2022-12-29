@@ -28,7 +28,7 @@ function NoteCard({ note }) {
   const handleDelete = async () => {
     if (!user) return;
     const response = await fetch(
-      "https://noto-server.up.railway.app/api/notes/" + note._id,
+      "https://noto-server.cyclic.app/api/notes/" + note._id,
       {
         method: "DELETE",
         headers: {
@@ -56,7 +56,7 @@ function NoteCard({ note }) {
       password: "",
     };
     const response = await fetch(
-      "https://noto-server.up.railway.app/api/notes/" + id,
+      "https://noto-server.cyclic.app/api/notes/" + id,
       {
         method: "PATCH",
         body: JSON.stringify(note),
@@ -79,7 +79,7 @@ function NoteCard({ note }) {
       // refetch notes to update visually
       const fetchNotes = async () => {
         const response = await fetch(
-          "https://noto-server.up.railway.app/api/notes",
+          "https://noto-server.cyclic.app/api/notes",
           {
             headers: {
               Authorization: `Bearer ${user.token}`,

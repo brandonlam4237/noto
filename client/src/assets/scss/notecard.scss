@@ -64,6 +64,6 @@
     }
     font-size: clamp(1rem, 0.2571rem + 0.9143vw, 1.4rem);
     white-space: pre-wrap;
-    word-break: break-all;
+    word-break: break-word;
   }
 }

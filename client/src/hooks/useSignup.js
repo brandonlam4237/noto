@@ -11,7 +11,7 @@ export const useSignup = () => {
     setError(null);
 
     const response = await fetch(
-      "https://noto-server.up.railway.app/api/user/signup",
+      "https://noto-server.cyclic.app/api/user/signup",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

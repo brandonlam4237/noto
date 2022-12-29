@@ -20,7 +20,7 @@ function EditNote({ closeForm, note, _setTitle, _setContent, _setColor }) {
     }
 
     const response = await fetch(
-      "https://noto-server.up.railway.app/api/notes/" + id,
+      "https://noto-server.cyclic.app/api/notes/" + id,
       {
         method: "PATCH",
         body: JSON.stringify(note),
@@ -49,7 +49,7 @@ function EditNote({ closeForm, note, _setTitle, _setContent, _setColor }) {
       // refetch notes to update visually
       const fetchNotes = async () => {
         const response = await fetch(
-          "https://noto-server.up.railway.app/api/notes",
+          "https://noto-server.cyclic.app/api/notes",
           {
             headers: {
               Authorization: `Bearer ${user.token}`,

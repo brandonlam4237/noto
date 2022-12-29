@@ -17,14 +17,11 @@ function Home() {
 
   useEffect(() => {
     const fetchNotes = async () => {
-      const response = await fetch(
-        "https://noto-server.up.railway.app/api/notes",
-        {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        }
-      );
+      const response = await fetch("https://noto-server.cyclic.app/api/notes", {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
       const json = await response.json();
       if (response.ok) {
         dispatch({ type: "SET_NOTES", payload: json });

@@ -23,7 +23,7 @@ function LockNoteForm({ closeForm, note, lockNote }) {
       password: password,
     };
     const response = await fetch(
-      "https://noto-server.up.railway.app/api/notes/" + id,
+      "https://noto-server.cyclic.app/api/notes/" + id,
       {
         method: "PATCH",
         body: JSON.stringify(note),
@@ -46,7 +46,7 @@ function LockNoteForm({ closeForm, note, lockNote }) {
       // refetch notes to update password
       const fetchNotes = async () => {
         const response = await fetch(
-          "https://noto-server.up.railway.app/api/notes",
+          "https://noto-server.cyclic.app/api/notes",
           {
             headers: {
               Authorization: `Bearer ${user.token}`,

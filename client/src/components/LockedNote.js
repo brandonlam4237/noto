@@ -10,7 +10,6 @@ function LockedNote({ note, unlockNote }) {
     e.preventDefault();
     console.log(input, " and ", note.password);
     if (input === note.password) {
-      console.log(input, " and ", note.password, " match");
       unlockNote();
     }
   };

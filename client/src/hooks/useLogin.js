@@ -11,7 +11,7 @@ export const useLogin = () => {
     setError(null);
 
     const response = await fetch(
-      "https://noto-server.up.railway.app/api/user/login",
+      "https://noto-server.cyclic.app/api/user/login",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
