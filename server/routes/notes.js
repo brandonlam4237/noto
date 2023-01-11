@@ -4,6 +4,7 @@ const {
   getNotes,
   getNote,
   deleteNote,
+  deleteAllNotes,
   updateNote,
 } = require("../controllers/note.controller");
 const requireAuth = require("../middleware/requireAuth");
@@ -18,13 +19,16 @@ router.get("/", getNotes);
 // GET a single Note
 router.get("/:id", getNote);
 
-// POST a new Note
+// CREATE a new Note
 router.post("/", createNote);
 
-// DELETE a new Note
+// DELETE a Note
 router.delete("/:id", deleteNote);
 
-// UPDATE a new Note
+// DELETE all Notes
+router.delete("/", deleteAllNotes);
+
+// UPDATE a Note
 router.patch("/:id", updateNote);
 
 module.exports = router;

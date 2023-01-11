@@ -9,6 +9,10 @@
     flex-direction: column;
     width: clamp(40rem, 2.8571rem + 45.7143vw, 60rem);
 
+    @media (max-width: 40rem) {
+      width: 95%;
+    }
+
     position: fixed;
     top: 50%;
     left: 50%;

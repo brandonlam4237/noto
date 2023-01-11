@@ -16,6 +16,8 @@ A minimal fullstack note app.
 
 - user authentication with encrypted passwords
 
-<img src="https://user-images.githubusercontent.com/70542819/209987244-c8ec0ccd-5073-4584-8ded-d065c9f32caf.png"/>
+- demo page for testing out the application without having to sign up
+
+<img src="https://user-images.githubusercontent.com/70542819/211675177-28165913-4896-49ea-895e-f8b37188b8a9.png"/>
 <img src="https://user-images.githubusercontent.com/70542819/209987239-9270b5fd-eb48-49ed-b827-b18f79164355.png"/>
 <img src="https://user-images.githubusercontent.com/70542819/209987248-254ae500-3b37-4848-b456-5b43780a38c9.png"/>

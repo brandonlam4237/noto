@@ -16,6 +16,9 @@
     h1 {
       font-size: clamp(2.5rem, -2.1429rem + 5.2143vw, 3rem);
       letter-spacing: 2.5px;
+      @media (max-width: 450px) {
+        font-size: 2rem;
+      }
     }
   }
 
@@ -29,6 +32,11 @@
     font-size: clamp(1.1rem, -0.9429rem + 2.2143vw, 1.5rem);
     letter-spacing: 1px;
     margin-right: 35px;
+
+    @media (max-width: 450px) {
+      gap: 12px;
+      font-size: 1rem;
+    }
   }
 
   .logged-in {
@@ -65,7 +73,12 @@
       }
     }
   }
-  .link > div:hover {
+  .link > div:hover,
+  .demo-link:hover {
     color: $dark-outline;
+  }
+
+  .demo-link {
+    cursor: pointer;
   }
 }

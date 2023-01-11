@@ -16,10 +16,17 @@
     width: clamp(40rem, 2.8571rem + 45.7143vw, 60rem);
     height: 50vh;
 
+    @media (max-width: 40rem) {
+      width: 95%;
+    }
+
     div {
       display: flex;
       flex-direction: column;
       width: 20rem;
+      @media (max-width: 40rem) {
+        width: 70%;
+      }
       input {
         font-size: clamp(1rem, -0.8571rem + 2.2857vw, 2rem);
         text-align: center;

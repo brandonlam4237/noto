@@ -47,6 +47,13 @@ const deleteNote = async (req, res) => {
   res.status(200).json(note);
 };
 
+// delete all notes
+const deleteAllNotes = async (req, res) => {
+  const user_id = req.user._id;
+  const notes = await Note.deleteMany({ user_id });
+  res.status(200).json(notes);
+};
+
 // update a note
 const updateNote = async (req, res) => {
   const { id } = req.params;
@@ -71,5 +78,6 @@ module.exports = {
   getNotes,
   getNote,
   deleteNote,
+  deleteAllNotes,
   updateNote,
 };

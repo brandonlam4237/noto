@@ -5,6 +5,7 @@ import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import user_icon from "../assets/icons/user.png";
 import { motion } from "framer-motion";
+import { useLogin } from "../hooks/useLogin";
 
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
@@ -13,10 +14,24 @@ function Navbar() {
   const { logout } = useLogout();
   const { user } = useAuthContext();
   const [hover, isHover] = useState(false);
+  const { login } = useLogin();
 
   const handleClick = () => {
     isHover(false);
     logout();
+  };
+
+  // login to demo account and delete all notes
+  const demoClick = async (e) => {
+    e.preventDefault();
+    await login("demo@gmail.com", "demopass");
+    const user = JSON.parse(localStorage.getItem("user"));
+    fetch("https://noto-server.cyclic.app/api/notes", {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
   };
 
   return (
@@ -60,6 +75,9 @@ function Navbar() {
           <Link to="/signup" className="link">
             <div>SIGNUP</div>
           </Link>
+          <div onClick={demoClick} className="demo-link">
+            DEMO
+          </div>
         </div>
       )}
     </div>
