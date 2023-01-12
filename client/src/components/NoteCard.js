@@ -119,7 +119,7 @@ function NoteCard({ note }) {
               {!lockedState && (
                 <Tippy
                   content={
-                    <span style={{ color: "white", letterSpacing: "1.5px" }}>
+                    <span style={{ color: "white", letterSpacing: "1px" }}>
                       Lock Note
                     </span>
                   }
@@ -136,7 +136,7 @@ function NoteCard({ note }) {
               {lockedState && (
                 <Tippy
                   content={
-                    <span style={{ color: "white", letterSpacing: "1.5px" }}>
+                    <span style={{ color: "white", letterSpacing: "1px" }}>
                       Remove Lock
                     </span>
                   }
@@ -146,7 +146,7 @@ function NoteCard({ note }) {
               )}
               <Tippy
                 content={
-                  <span style={{ color: "white", letterSpacing: "1.5px" }}>
+                  <span style={{ color: "white", letterSpacing: "1px" }}>
                     Edit Note
                   </span>
                 }
@@ -161,7 +161,7 @@ function NoteCard({ note }) {
               </Tippy>
               <Tippy
                 content={
-                  <span style={{ color: "white", letterSpacing: "1.5px" }}>
+                  <span style={{ color: "white", letterSpacing: "1px" }}>
                     Delete Note
                   </span>
                 }

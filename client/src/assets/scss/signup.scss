@@ -68,18 +68,17 @@
     font-size: 0.7rem;
     gap: 4px;
     padding: 6px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 
     @include lg {
-      font-size: clamp(0.7rem, -0.2286rem + 1.1429vw, 1rem);
-      letter-spacing: 2px;
+      font-size: clamp(0.7rem, 0.18rem + 0.64vw, 0.9rem);
     }
   }
 
   input {
     border: solid $dark-outline 1.5px;
     font-size: 0.6rem;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     font-size: 0.8rem;
     padding: 4px;
     outline: none;
@@ -88,7 +87,7 @@
       font-size: clamp(0.8rem, 0.4286rem + 0.4571vw, 1rem);
       padding: clamp(0.25rem, 0.0179rem + 0.2857vw, 0.3rem);
       border: solid $dark-outline 2px;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
     }
   }
 
@@ -110,13 +109,12 @@
     background-color: white;
     padding: 4px;
     border-radius: 4px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     border: solid $dark-outline 1.5px;
     @include lg {
       font-size: clamp(0.8rem, 0.4286rem + 0.4571vw, 1rem);
       padding: clamp(0.25rem, 0.0179rem + 0.2857vw, 0.3rem);
       border: solid $dark-outline 2px;
-      letter-spacing: 2px;
     }
   }
 
@@ -126,11 +124,10 @@
     color: rgb(221, 104, 104);
     font-size: 0.7rem;
     padding: 6px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     @include lg {
-      font-size: clamp(0.7rem, -0.2286rem + 1.1429vw, 1rem);
-      letter-spacing: 2px;
+      font-size: clamp(0.7rem, 0.18rem + 0.64vw, 0.9rem);
     }
   }
 }

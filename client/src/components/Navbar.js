@@ -49,7 +49,7 @@ function Navbar() {
           )}
           <Tippy
             content={
-              <span style={{ color: "white", letterSpacing: "1.5px" }}>
+              <span style={{ color: "white", letterSpacing: "1px" }}>
                 Logout
               </span>
             }

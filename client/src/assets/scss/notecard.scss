@@ -15,7 +15,7 @@
     display: flex;
     justify-content: space-between;
     font-size: clamp(1.3rem, -0.1857rem + 1.8286vw, 1.6rem);
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     padding: 8px;
     @include xl {
       padding: 12px;
