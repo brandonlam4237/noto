@@ -8,7 +8,7 @@ function LockedNote({ note, unlockNote }) {
   const [clicked, setClicked] = useState(false);
   const handleUnlock = (e) => {
     e.preventDefault();
-    console.log(input, " and ", note.password);
+    //console.log(input, " and ", note.password);
     if (input === note.password) {
       unlockNote();
     }

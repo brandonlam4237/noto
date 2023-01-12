@@ -21,11 +21,12 @@
     border-radius: 4px;
     box-shadow: 2px 3px 5px $dark-shadow;
     margin-top: 60px;
+    width: clamp(17rem, 6.1148rem + 49.7608vw, 30rem);
 
     @include md {
-      height: 40vh;
-      width: 40vw;
-      padding: 70px;
+      width: clamp(30rem, 18.8372rem + 23.2558vw, 45rem);
+      height: 55vh;
+      max-height: 27rem;
     }
   }
   .header {
@@ -56,6 +57,7 @@
     width: 16rem;
     @include lg {
       width: 20vw;
+      max-width: 22rem;
     }
   }
 

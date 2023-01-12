@@ -36,7 +36,7 @@ function EditNote({ closeForm, note, _setTitle, _setContent, _setColor }) {
       console.log(id);
     }
     if (response.ok) {
-      console.log("Note Updated", json);
+      //console.log("Note Updated", json);
       closeForm();
       dispatch({ type: "UPDATE_NOTE", payload: json });
       if (title === "") {

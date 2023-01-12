@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 import "../assets/scss/login.scss";
@@ -13,6 +13,25 @@ function Login() {
     e.preventDefault();
     await login(email, password);
   };
+
+  // on page load wakeup server and clean up demo notes(just in case)
+  useEffect(() => {
+    async function wakeUp() {
+      const res = await fetch("https://noto-server.cyclic.app/api/user/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: "demo@gmail.com", password: "demopass" }),
+      });
+      const json = await res.json();
+      await fetch("https://noto-server.cyclic.app/api/notes", {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${json.token}`,
+        },
+      });
+    }
+    wakeUp();
+  }, []);
 
   return (
     <form className="login" onSubmit={handleSubmit}>

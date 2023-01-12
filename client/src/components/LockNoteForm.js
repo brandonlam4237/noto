@@ -39,7 +39,7 @@ function LockNoteForm({ closeForm, note, lockNote }) {
       console.log(id);
     }
     if (response.ok) {
-      console.log("Note Updated", json);
+      //console.log("Note Updated", json);
       closeForm();
       dispatch({ type: "UPDATE_NOTE", payload: json });
 

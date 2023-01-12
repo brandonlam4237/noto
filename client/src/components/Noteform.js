@@ -31,7 +31,7 @@ function Noteform({ closeForm }) {
       console.log("Note submission error");
     }
     if (response.ok) {
-      console.log("Note added", json);
+      //console.log("Note added", json);
       setTitle("");
       setContent("");
       setColor("#fdd2d2");

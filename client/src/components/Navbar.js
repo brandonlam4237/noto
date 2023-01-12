@@ -21,17 +21,18 @@ function Navbar() {
     logout();
   };
 
-  // login to demo account and delete all notes
+  // login to demo account
   const demoClick = async (e) => {
     e.preventDefault();
     await login("demo@gmail.com", "demopass");
+    /*
     const user = JSON.parse(localStorage.getItem("user"));
     fetch("https://noto-server.cyclic.app/api/notes", {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
-    });
+    }); */
   };
 
   return (
